@@ -1,13 +1,23 @@
 import { UserLoginData } from "@/models/userModels";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface UserState {
   user: UserLoginData | null;
 }
 
-const getUserFromLocalStorage = async (): Promise<UserState["user"]> => {
-  const user = await AsyncStorage.getItem("user");
+// not a real storage, just a placeholder
+const storage = (() => {
+  const data: Record<string, string> = {};
+  return {
+    getItem: (key: string) => data[key],
+    setItem: (key: string, value: string) => {
+      data[key] = value;
+    },
+  };
+})();
+
+const getUserFromLocalStorage = (): UserState["user"] => {
+  const user = storage.getItem("user");
   if (user) {
     return JSON.parse(user);
   }
@@ -15,11 +25,11 @@ const getUserFromLocalStorage = async (): Promise<UserState["user"]> => {
 };
 
 const setUserToLocalStorage = async (user: UserLoginData) => {
-  AsyncStorage.setItem("user", JSON.stringify(user));
+  storage.setItem("user", JSON.stringify(user));
 };
 
 const initialState: UserState = {
-  user: null,
+  user: getUserFromLocalStorage(), // does not do anything, as storage is not real
 };
 
 const userSlice = createSlice({
@@ -33,15 +43,8 @@ const userSlice = createSlice({
     clearUser: (state) => {
       state.user = null;
     },
-    setInitialUser: (state) => {
-      getUserFromLocalStorage().then((user) => {
-        if (user) {
-          state.user = user;
-        }
-      });
-    },
   },
 });
 
-export const { setUser, clearUser, setInitialUser } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 export const userReducer = userSlice.reducer;
