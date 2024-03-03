@@ -11,7 +11,10 @@ const RegisterScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
-      <RegisterForm onSubmit={handleRegisterSubmit} />
+      <RegisterForm
+        onSubmit={handleRegisterSubmit}
+        style={styles.registerForm}
+      />
     </View>
   );
 };
@@ -28,5 +31,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  registerForm: {
+    backgroundColor: "#212121",
+    padding: 20,
+    borderRadius: 10,
   },
 });

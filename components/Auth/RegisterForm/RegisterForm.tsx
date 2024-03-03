@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import { registerFormValidator, FieldValidationErrors } from "./validation";
 import { FormButton } from "@/components/Utility/Form/FormButton";
 import { FormField } from "@/components/Utility/Form/FormField";
@@ -7,6 +7,7 @@ import { UserCreateModel, UserModel } from "@/models/userModels";
 
 interface RegisterFormProps {
   onSubmit: (user: UserCreateModel) => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 const initialUser: UserCreateModel = {
@@ -17,7 +18,10 @@ const initialUser: UserCreateModel = {
   website: "",
 };
 
-export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
+export const RegisterForm: React.FC<RegisterFormProps> = ({
+  onSubmit,
+  style,
+}) => {
   const [user, setUser] = useState(initialUser);
   const [fieldValidationErrors, setFieldValidationErrors] =
     useState<FieldValidationErrors>({});
@@ -34,7 +38,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <FormField
         label="Username"
         value={user.username}
@@ -98,8 +102,9 @@ const styles = StyleSheet.create({
     minWidth: 150,
   },
   input: {
-    backgroundColor: "#fff",
+    backgroundColor: "#ddd",
     borderColor: "#ccc",
+    color: "#000",
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,

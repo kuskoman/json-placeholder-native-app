@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import {
-  Button,
-  StyleProp,
-  StyleSheet,
-  TextInput,
-  View,
-  ViewStyle,
-} from "react-native";
-import { FormButton } from "../Utility/Form/FormButton";
+import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
+import { FormField } from "../Utility/Form/FormField"; // Adjust the path as necessary
+import { FormButton, FormButtonStyles } from "../Utility/Form/FormButton"; // Adjust the path as necessary
 
 interface LoginCredentials {
   email: string;
@@ -24,43 +18,32 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, style }) => {
   const [password, setPassword] = useState("");
 
   return (
-    <View style={style}>
-      <TextInput
-        placeholder="Email"
+    <View style={[styles.container, style]}>
+      <FormField
+        label="Email"
         value={email}
         onChangeText={setEmail}
-        autoCapitalize="none"
+        placeholder="Enter your email"
         keyboardType="email-address"
-        style={formStyles.input}
+        autoCapitalize="none"
       />
-      <TextInput
-        placeholder="Password"
+      <FormField
+        label="Password"
         value={password}
         onChangeText={setPassword}
+        placeholder="Enter your password"
         secureTextEntry={true}
-        autoCorrect={false}
-        style={formStyles.input}
       />
       <FormButton
         title="Login"
         onPress={() => onSubmit({ email, password })}
         styles={buttonStyles}
-      ></FormButton>
+      />
     </View>
   );
 };
 
-const formStyles = StyleSheet.create({
-  input: {
-    backgroundColor: "#565656",
-    color: "#fff",
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
-  },
-});
-
-const buttonStyles = StyleSheet.create({
+const buttonStyles: FormButtonStyles = {
   button: {
     backgroundColor: "#4CAF50",
     padding: 10,
@@ -69,4 +52,16 @@ const buttonStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+};
+
+const styles = StyleSheet.create({
+  input: {
+    backgroundColor: "#ddd",
+    borderColor: "#ccc",
+    color: "#000",
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
+  },
+  container: {},
 });

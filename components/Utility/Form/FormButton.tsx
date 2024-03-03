@@ -1,10 +1,10 @@
 import React from "react";
 import { Pressable, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 
-type FormButtonStyles = {
+export interface FormButtonStyles {
   buttonText?: StyleProp<TextStyle>;
   button?: StyleProp<ViewStyle>;
-};
+}
 
 export interface FormButtonProps {
   title: string;

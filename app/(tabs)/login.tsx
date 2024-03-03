@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginForm: {
-    width: "80%",
     backgroundColor: "#212121",
     padding: 20,
     borderRadius: 10,
