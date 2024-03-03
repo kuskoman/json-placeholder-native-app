@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import { LoginForm } from "@/components/Auth/LoginForm";
-import { ThemeProvider } from "@react-navigation/native";
 
 const LoginScreen: React.FC = () => {
   const handleLoginSubmit = (credentials: {
