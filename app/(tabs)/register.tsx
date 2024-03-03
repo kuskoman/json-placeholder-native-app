@@ -23,6 +23,7 @@ export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 50,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+    color: "white",
   },
   registerForm: {
     backgroundColor: "#212121",
