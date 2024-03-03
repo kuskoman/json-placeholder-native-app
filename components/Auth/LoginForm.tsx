@@ -7,7 +7,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { FormButton } from "../Utility/FormButton";
+import { FormButton } from "../Utility/Form/FormButton";
 
 interface LoginCredentials {
   email: string;
