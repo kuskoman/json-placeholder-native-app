@@ -4,6 +4,7 @@ import { registerFormValidator, FieldValidationErrors } from "./validation";
 import { FormButton } from "@/components/Utility/Form/FormButton";
 import { FormField } from "@/components/Utility/Form/FormField";
 import { UserCreateModel, UserModel } from "@/models/userModels";
+import { baseFormStyles } from "../formStyles";
 
 interface RegisterFormProps {
   onSubmit: (user: UserCreateModel) => void;
@@ -84,40 +85,4 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    backgroundColor: "#f7f7f7",
-  },
-  button: {
-    backgroundColor: "#4CAF50",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    alignItems: "center",
-    marginTop: 15,
-    minWidth: 150,
-  },
-  input: {
-    backgroundColor: "#ddd",
-    borderColor: "#ccc",
-    color: "#000",
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
-  },
-  label: {
-    fontSize: 16,
-    color: "#white",
-    marginBottom: 5,
-    fontWeight: "bold",
-  },
-  errorText: {
-    fontSize: 14,
-    color: "red",
-    marginBottom: 5,
-  },
-});
+const styles = baseFormStyles;

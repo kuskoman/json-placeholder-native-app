@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
 import { FormField } from "../Utility/Form/FormField"; // Adjust the path as necessary
 import { FormButton, FormButtonStyles } from "../Utility/Form/FormButton"; // Adjust the path as necessary
+import { baseFormStyles } from "./formStyles";
 
 interface LoginCredentials {
   email: string;
@@ -54,14 +55,4 @@ const buttonStyles: FormButtonStyles = {
   },
 };
 
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: "#ddd",
-    borderColor: "#ccc",
-    color: "#000",
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
-  },
-  container: {},
-});
+const styles = baseFormStyles;
