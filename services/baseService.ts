@@ -20,7 +20,7 @@ export abstract class BaseService<Model extends BaseModel, CreateModel> {
     const modelsWithKeys = response.map((model) =>
       this.appendKey<Model>(model)
     );
-    return modelsWithKeys as unknown as Model[];
+    return modelsWithKeys;
   }
 
   protected async post(path: string, body: CreateModel): Promise<Model> {
@@ -54,11 +54,11 @@ export abstract class BaseService<Model extends BaseModel, CreateModel> {
     if (!response.ok) {
       throw new Error(`Failed to ${method} ${path}: ${response.statusText}`);
     }
-    const responseJson = response.json();
+    const responseJson = await response.json();
     return responseJson;
   }
 
-  private async appendKey<T>(model: T): Promise<T & { key: string }> {
+  private appendKey<T>(model: T): T {
     const key = this.isModelWithId(model)
       ? model.id.toString()
       : this.generateKey();
