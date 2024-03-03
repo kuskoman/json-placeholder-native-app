@@ -1,6 +1,8 @@
-import { Optional } from "../utils/typeUtils";
+import { BaseModel } from "./baseModel";
 
-export interface UserModel {
+type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+export interface UserModel extends BaseModel {
   id: number;
   name: string;
   username: string;
@@ -11,7 +13,10 @@ export interface UserModel {
   company: CompanyModel;
 }
 
-export type UserLoginData = Pick<UserModel, "username" | "email" | "id" | "name">;
+export type UserLoginData = Pick<
+  UserModel,
+  "username" | "email" | "id" | "name"
+>;
 
 export interface AddressModel {
   street: string;
@@ -32,4 +37,7 @@ export interface CompanyModel {
   bs: string;
 }
 
-export type UserCreateModel = Optional<Omit<UserModel, "id">, "address" | "company">;
+export type UserCreateModel = Optional<
+  Omit<UserModel, "id">,
+  "address" | "company"
+>;

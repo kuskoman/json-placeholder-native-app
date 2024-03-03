@@ -1,4 +1,6 @@
-export interface PhotoModel {
+import { BaseModel, CreateModel } from "./baseModel";
+
+export interface PhotoModel extends BaseModel {
   albumId: number;
   id: number;
   title: string;
@@ -6,4 +8,4 @@ export interface PhotoModel {
   thumbnailUrl: string;
 }
 
-export type PhotoCreateModel = Omit<PhotoModel, "id">;
+export type PhotoCreateModel = CreateModel<PhotoModel>;

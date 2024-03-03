@@ -1,4 +1,6 @@
-export interface CommentModel {
+import { BaseModel, CreateModel } from "./baseModel";
+
+export interface CommentModel extends BaseModel {
   postId: number;
   id: number;
   name: string;
@@ -6,4 +8,4 @@ export interface CommentModel {
   body: string;
 }
 
-export type CommentCreateModel = Omit<CommentModel, "id">;
+export type CommentCreateModel = CreateModel<CommentModel>;
