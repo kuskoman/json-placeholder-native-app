@@ -34,9 +34,13 @@ export default Comment;
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#444",
     padding: 20,
-    margin: 10,
+    marginTop: 5,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 4,
   },
   name: {
     fontWeight: "bold",
@@ -46,8 +50,9 @@ const style = StyleSheet.create({
     color: "#666",
   },
   body: {
-    backgroundColor: "white",
+    backgroundColor: "555",
     padding: 20,
     borderRadius: 4,
+    marginLeft: 20,
   },
 });

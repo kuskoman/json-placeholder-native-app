@@ -5,12 +5,17 @@ import { PostsService } from "@/services/postsService";
 import PostBox from "@/components/Posts/PostBox";
 import { Text } from "@/components/Themed";
 import { StyleSheet } from "react-native";
+import { RootStackParamList } from "@/routes";
+import { NavigationProp } from "@react-navigation/native";
+import { useNavigation } from "expo-router";
 
 const PostsScreen: React.FC = () => {
   const [posts, setPosts] = useState<PostModel[]>([]);
   const [loading, setLoading] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [page, setPage] = useState(1);
+
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const postsService = new PostsService();
 
@@ -39,7 +44,9 @@ const PostsScreen: React.FC = () => {
     <View style={styles.container}>
       <FlatList
         data={posts}
-        renderItem={({ item }) => <PostBox post={item} />}
+        renderItem={({ item }) => (
+          <PostBox post={item} navigation={navigation} />
+        )}
         keyExtractor={(item) => item.key}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
