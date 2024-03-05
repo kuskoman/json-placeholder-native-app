@@ -17,7 +17,7 @@ export const PhotoItem: React.FC<PhotoProps> = ({ photo }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#444",
     padding: 16,
     marginVertical: 8,
     elevation: 3,
@@ -25,16 +25,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
+    width: "30%",
   },
   title: {
     marginBottom: 8,
     fontWeight: "bold",
   },
   image: {
-    maxHeight: 200,
-    minHeight: 150,
-    maxWidth: 200,
-    minWidth: 150,
+    height: 150,
+    width: "100%",
     resizeMode: "cover",
   },
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, StyleSheet, Text } from "react-native";
+import { View, FlatList, StyleSheet, Text, Dimensions } from "react-native";
 import { AlbumModel } from "@/models/albumModels";
 import { PhotoModel } from "@/models/photoModels";
 import { AlbumsService } from "@/services/albumsService";
@@ -40,23 +40,40 @@ const AlbumScreen = () => {
   return (
     <View style={styles.container}>
       {album && <Album album={album} />}
-      <FlatList
-        data={photos}
-        renderItem={({ item }) => <PhotoItem photo={item} />}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.flatListContentContainer}
-      />
+      <View style={styles.flatListContentContainer}>
+        <FlatList
+          data={photos}
+          renderItem={({ item }) => <PhotoItem photo={item} />}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={3}
+          columnWrapperStyle={styles.columnWrapper}
+          scrollEnabled={true}
+        />
+      </View>
     </View>
   );
 };
 
 export default AlbumScreen;
 
+const screenWidth = Dimensions.get("window").width;
+const photoWidth = (screenWidth - 10 * 2 - 10 * 2) / 3;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 10,
+    height: "100%",
   },
   flatListContentContainer: {
     flexGrow: 1,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  photoItem: {
+    width: photoWidth,
+    height: photoWidth,
   },
 });
