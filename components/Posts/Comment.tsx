@@ -47,7 +47,7 @@ const style = StyleSheet.create({
     color: "#1976d2",
   },
   email: {
-    color: "#666",
+    color: "#777",
   },
   body: {
     backgroundColor: "555",
