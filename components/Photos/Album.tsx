@@ -6,14 +6,14 @@ import { RootStackParamList } from "@/routes";
 
 interface AlbumItemProps {
   album: AlbumModel;
-  navigation: NavigationProp<RootStackParamList>;
+  navigation?: NavigationProp<RootStackParamList>;
 }
 
 export const Album: React.FC<AlbumItemProps> = ({ album, navigation }) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate("album", { albumId: album.id })}
+      onPress={() => navigation?.navigate("album", { albumId: album.id })}
     >
       <Text style={styles.title}>{album.title}</Text>
     </TouchableOpacity>

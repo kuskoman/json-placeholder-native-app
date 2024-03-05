@@ -31,8 +31,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   image: {
-    width: "100%",
     maxHeight: 200,
+    minHeight: 150,
+    maxWidth: 200,
+    minWidth: 150,
     resizeMode: "cover",
   },
 });
