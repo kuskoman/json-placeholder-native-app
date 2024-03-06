@@ -2,13 +2,29 @@ import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import { LoginForm } from "@/components/Auth/LoginForm";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/userSlice";
+import { UsersService } from "@/services/usersService";
+import { useNavigation } from "expo-router";
+import { RootStackParamList } from "@/routes";
+import { NavigationProp } from "@react-navigation/native";
+
+interface LoginSubmitParams {
+  email: string;
+  password: string;
+}
 
 const LoginScreen: React.FC = () => {
-  const handleLoginSubmit = (credentials: {
-    email: string;
-    password: string;
-  }) => {
-    console.log(credentials);
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
+  const usersService = new UsersService();
+
+  const handleLoginSubmit = async (_credentials: LoginSubmitParams) => {
+    const exampleUser = await usersService.getUser(1);
+
+    dispatch(setUser(exampleUser));
+
+    navigation.navigate("index");
   };
 
   return (

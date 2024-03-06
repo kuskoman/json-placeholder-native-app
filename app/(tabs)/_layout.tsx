@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
 import { Provider } from "react-redux";
@@ -18,7 +18,7 @@ function TabBarIcon(props: {
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   store.subscribe(() => {
     const state = store.getState();
     const isLoggedIn = !!state.user.user?.id;
