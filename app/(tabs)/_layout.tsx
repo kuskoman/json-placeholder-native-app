@@ -31,24 +31,10 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="index"
+          name="posts"
           options={{
-            title: "Tab One",
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-            headerRight: () => (
-              <Link href="/modal" asChild>
-                <Pressable>
-                  {({ pressed }) => (
-                    <FontAwesome
-                      name="info-circle"
-                      size={25}
-                      color={Colors[colorScheme ?? "light"].text}
-                      style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                    />
-                  )}
-                </Pressable>
-              </Link>
-            ),
+            title: "Posts",
+            tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
           }}
         />
         <Tabs.Screen
