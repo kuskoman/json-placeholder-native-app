@@ -8,7 +8,6 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { store } from "@/store/store";
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
@@ -18,6 +17,13 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+
+  const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
+  store.subscribe(() => {
+    const state = store.getState();
+    const isLoggedIn = !!state.user.user?.id;
+    setIsUserLoggedIn(isLoggedIn);
+  });
 
   return (
     <Provider store={store}>
@@ -49,14 +55,15 @@ export default function TabLayout() {
           name="login"
           options={{
             title: "Login",
+            href: isUserLoggedIn ? null : "/login",
             tabBarIcon: ({ color }) => <TabBarIcon name="key" color={color} />,
           }}
         />
-
         <Tabs.Screen
           name="profile"
           options={{
             title: "Profile",
+            href: isUserLoggedIn ? "/profile" : null,
             tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           }}
         />
@@ -64,6 +71,7 @@ export default function TabLayout() {
           name="register"
           options={{
             title: "Register",
+            href: isUserLoggedIn ? null : "/register",
             tabBarIcon: ({ color }) => (
               <TabBarIcon name="user-plus" color={color} />
             ),
