@@ -1,7 +1,6 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
-import { Pressable } from "react-native";
+import { Tabs } from "expo-router";
 import { Provider } from "react-redux";
 
 import Colors from "@/constants/Colors";
@@ -31,10 +30,19 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="posts"
+          name="index"
           options={{
             title: "Posts",
             tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="albums"
+          options={{
+            title: "Albums",
+            tabBarIcon: ({ color }) => (
+              <TabBarIcon name="image" color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -42,6 +50,23 @@ export default function TabLayout() {
           options={{
             title: "Login",
             tabBarIcon: ({ color }) => <TabBarIcon name="key" color={color} />,
+          }}
+        />
+
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="register"
+          options={{
+            title: "Register",
+            tabBarIcon: ({ color }) => (
+              <TabBarIcon name="user-plus" color={color} />
+            ),
           }}
         />
       </Tabs>

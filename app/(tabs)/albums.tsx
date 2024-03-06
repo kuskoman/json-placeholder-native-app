@@ -65,6 +65,10 @@ export default AlbumsScreen;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#212121",
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 15,
     flex: 1,
   },
   flatListContentContainer: {

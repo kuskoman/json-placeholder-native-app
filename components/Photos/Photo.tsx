@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginVertical: 8,
     elevation: 3,
+    borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 8,
     fontWeight: "bold",
+    color: "white",
   },
   image: {
     height: 150,
