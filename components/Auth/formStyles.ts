@@ -5,6 +5,7 @@ export const baseFormStyles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
     flex: 1,
     backgroundColor: "#f7f7f7",
   },
@@ -23,6 +24,7 @@ export const baseFormStyles = StyleSheet.create({
     color: "#000",
     padding: 10,
     margin: 10,
+    width: "100%",
     borderRadius: 5,
   },
   label: {

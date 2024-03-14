@@ -1,11 +1,11 @@
 import AddressBox from "@/components/Profile/AddressBox";
 import CompanyBox from "@/components/Profile/CompanyBox";
 import UserProfile from "@/components/Profile/UserProfile";
-import { View } from "@/components/Themed";
 import { UserModel } from "@/models/userModels";
 import { UsersService } from "@/services/usersService";
 import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
+import { Text, View } from "@/components/Themed";
 
 const ProfileScreen: React.FC = () => {
   const usersService = new UsersService();
@@ -30,7 +30,11 @@ const ProfileScreen: React.FC = () => {
           <CompanyBox company={user.company} />
           <AddressBox address={user.address} />
         </View>
-      ) : null}
+      ) : (
+        <View>
+          <Text>Loading...</Text>
+        </View>
+      )}
     </View>
   );
 };

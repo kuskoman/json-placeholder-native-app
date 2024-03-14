@@ -1,6 +1,6 @@
 import { AddressModel } from "@/models/userModels";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { Text } from "@/components/Themed";
 import { profileStyles } from "./profileStyles";
 

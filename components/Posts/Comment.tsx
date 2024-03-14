@@ -50,7 +50,7 @@ const style = StyleSheet.create({
     color: "#777",
   },
   body: {
-    backgroundColor: "555",
+    backgroundColor: "#555",
     padding: 20,
     borderRadius: 4,
     marginLeft: 20,

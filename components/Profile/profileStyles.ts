@@ -5,8 +5,8 @@ export const profileStyles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
-    flex: 1,
     backgroundColor: "#333",
+    color: "white",
   },
   title: {
     fontSize: 16,

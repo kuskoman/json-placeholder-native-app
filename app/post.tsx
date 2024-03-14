@@ -15,7 +15,6 @@ export interface PostScreenProps {
 }
 
 const PostScreen = () => {
-  console.log("Props");
   const route = useRoute<RouteProp<RootStackParamList, "post">>();
   const postId = route.params.postId;
   const [post, setPost] = useState<PostModel | null>(null);
